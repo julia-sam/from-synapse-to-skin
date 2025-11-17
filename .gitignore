@@ -16,6 +16,7 @@ data/
 .venv/
 __pycache__/
 *.pyc
+*__init__.py
 
 # ----------------------------------------------------
 # JUPYTER NOTEBOOK STUFF
