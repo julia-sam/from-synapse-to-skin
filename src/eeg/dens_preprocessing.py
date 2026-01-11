@@ -9,20 +9,154 @@ import mne
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 MULTISCALE_DIR = PROJECT_ROOT / "data" / "multiscale"
 
-# Add your mapping here
+# mapping
 EMOTION_TO_STATE = {
-    'neutral_1_1': 'baseline',
+    '12_10': 'amusement',
     '12_2': 'amusement',
-    '8_3': 'amusement',
-    '4_4': 'stress',
-    '15_5': 'stress',
-    '17_6': 'baseline',
+    '12_3': 'amusement',
+    '12_34': 'amusement',
+    '12_4': 'amusement',
+    '12_7': 'amusement',
+    '12_8': 'amusement',
+    '12_9': 'baseline',
+    '13_10': 'amusement',
+    '13_11': 'baseline',
+    '13_2': 'baseline',
+    '13_3': 'amusement',
+    '13_4': 'baseline',
+    '13_5': 'baseline',
+    '13_6': 'amusement',
+    '15_10': 'stress',
+    '15_2': 'amusement',
+    '15_3': 'stress',
+    '15_32': 'baseline',
+    '15_4': 'baseline',
+    '15_5': 'baseline',
+    '15_6': 'baseline',
+    '15_7': 'stress',
+    '15_8': 'amusement',
+    '15_9': 'baseline',
+    '16_10': 'baseline',
+    '16_11': 'stress',
+    '16_2': 'stress',
+    '16_3': 'baseline',
+    '16_36': 'stress',
+    '16_5': 'stress',
+    '16_6': 'stress',
     '16_7': 'stress',
-    'neutral_2_8': 'baseline',
-    '7_9': 'baseline',
+    '16_9': 'stress',
+    '17_10': 'baseline',
+    '17_11': 'baseline',
+    '17_2': 'stress',
+    '17_5': 'stress',
+    '17_6': 'baseline',
+    '17_7': 'baseline',
+    '17_8': 'stress',
+    '17_9': 'stress',
+    '1_10': 'baseline',
+    '1_11': 'baseline',
+    '1_2': 'baseline',
+    '1_4': 'stress',
+    '1_7': 'stress',
+    '1_8': 'stress',
+    '1_9': 'stress',
+    '23_11': 'amusement',
+    '23_3': 'baseline',
+    '23_8': 'baseline',
+    '24_10': 'baseline',
+    '24_11': 'stress',
+    '24_2': 'stress',
+    '24_3': 'baseline',
+    '24_4': 'baseline',
+    '24_5': 'stress',
+    '24_8': 'stress',
+    '24_9': 'baseline',
+    '27_11': 'baseline',
+    '27_2': 'baseline',
+    '27_3': 'baseline',
+    '27_30': 'stress',
+    '27_4': 'baseline',
+    '27_5': 'baseline',
+    '27_6': 'baseline',
+    '27_7': 'baseline',
+    '27_8': 'baseline',
+    '28_3': 'baseline',
+    '28_9': 'baseline',
     '2_10': 'stress',
-    '24_11': 'stress'
- }
+    '2_11': 'baseline',
+    '2_2': 'baseline',
+    '2_27': 'stress',
+    '2_4': 'stress',
+    '2_5': 'stress',
+    '2_6': 'baseline',
+    '2_7': 'stress',
+    '2_8': 'stress',
+    '2_9': 'baseline',
+    '3_11': 'baseline',
+    '3_2': 'baseline',
+    '3_3': 'baseline',
+    '3_6': 'baseline',
+    '3_7': 'baseline',
+    '3_8': 'baseline',
+    '3_9': 'amusement',
+    '4_10': 'baseline',
+    '4_11': 'stress',
+    '4_2': 'baseline',
+    '4_3': 'stress',
+    '4_33': 'stress',
+    '4_4': 'stress',
+    '4_5': 'stress',
+    '4_6': 'baseline',
+    '4_7': 'baseline',
+    '4_8': 'stress',
+    '4_9': 'baseline',
+    '5_10': 'baseline',
+    '5_11': 'baseline',
+    '5_2': 'stress',
+    '5_3': 'baseline',
+    '5_35': 'stress',
+    '5_4': 'stress',
+    '5_5': 'stress',
+    '5_6': 'baseline',
+    '6_10': 'amusement',
+    '6_29': 'baseline',
+    '6_5': 'baseline',
+    '7_10': 'stress',
+    '7_11': 'baseline',
+    '7_2': 'amusement',
+    '7_28': 'stress',
+    '7_3': 'baseline',
+    '7_4': 'stress',
+    '7_6': 'baseline',
+    '7_7': 'stress',
+    '7_8': 'stress',
+    '7_9': 'baseline',
+    '8_10': 'amusement',
+    '8_11': 'amusement',
+    '8_2': 'baseline',
+    '8_3': 'amusement',
+    '8_4': 'baseline',
+    '8_5': 'amusement',
+    '8_7': 'amusement',
+    '8_9': 'amusement',
+    '9_10': 'amusement',
+    '9_11': 'amusement',
+    '9_2': 'baseline',
+    '9_3': 'amusement',
+    '9_4': 'amusement',
+    '9_5': 'baseline',
+    '9_6': 'amusement',
+    '9_7': 'baseline',
+    '9_9': 'amusement',
+    'neutral_1_1': 'baseline',
+    'neutral_2_31': 'baseline',
+    'neutral_2_4': 'baseline',
+    'neutral_2_5': 'baseline',
+    'neutral_2_6': 'baseline',
+    'neutral_2_7': 'baseline',
+    'neutral_2_8': 'baseline',
+    'neutral_2_9': 'baseline',
+}
 
 def label_window_by_events(start_sec, end_sec, events_df, label_col, min_overlap_ratio=0.6):
     """
@@ -139,10 +273,27 @@ def build_dens_msff_for_subject(subject_id: str,
 
 def build_all_dens_msff(subject_ids, save: bool = True, filename: str = "dens_brain.csv") -> pd.DataFrame:
     frames = []
+    failed_subjects = []
+    
     for sid in subject_ids:
         print(f"\n=== Processing {sid} ===")
-        df_sid = build_dens_msff_for_subject(sid)
-        frames.append(df_sid)
+        try:
+            df_sid = build_dens_msff_for_subject(sid)
+            if len(df_sid) > 0:
+                frames.append(df_sid)
+                print(f"✓ {sid}: {len(df_sid)} rows added")
+            else:
+                print(f"⚠ {sid}: no valid windows extracted")
+        except FileNotFoundError as e:
+            print(f"✗ {sid}: FileNotFoundError — {e}")
+            failed_subjects.append(sid)
+        except Exception as e:
+            print(f"✗ {sid}: {type(e).__name__} — {e}")
+            failed_subjects.append(sid)
+
+    if not frames:
+        print("ERROR: No valid data extracted from any subject!")
+        return pd.DataFrame()
 
     # Combine all subjects
     all_df = pd.concat(frames, ignore_index=True)
@@ -152,6 +303,25 @@ def build_all_dens_msff(subject_ids, save: bool = True, filename: str = "dens_br
         MULTISCALE_DIR.mkdir(parents=True, exist_ok=True)
         out_path = MULTISCALE_DIR / filename
         all_df.to_csv(out_path, index=False)
-        print(f"Saved combined DENS MSFF to {out_path}")
+        print(f"\n✓ Saved combined DENS MSFF to {out_path}")
+
+    print(f"\n=== Summary ===")
+    print(f"Processed: {len(subject_ids)}")
+    print(f"Succeeded: {len(subject_ids) - len(failed_subjects)}")
+    print(f"Failed: {failed_subjects}")
 
     return all_df
+
+def validate_dens_msff(df: pd.DataFrame) -> dict:
+    """
+    Quick validation checks on DENS MSFF dataset before training.
+    Returns summary dict.
+    """
+    summary = {
+        "n_rows": len(df),
+        "n_subjects": df["subject_id"].nunique() if "subject_id" in df.columns else np.nan,
+        "label_dist": df["label"].value_counts(dropna=False).to_dict() if "label" in df.columns else {},
+        "n_features": len([c for c in df.columns if c not in ["subject_id", "layer", "start", "end", "raw_label", "label", "label_code"]]),
+        "n_nans_per_col": df.isna().sum().to_dict(),
+    }
+    return summary

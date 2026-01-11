@@ -36,10 +36,6 @@ def load_dens_subject(subject_id: str):
     return raw, events_df
 
 def pick_event_label_column(events_df: pd.DataFrame) -> str:
-    """
-    Choose the column that best represents the stimulus/emotion label.
-    Prefer explicit labels over generic trial_type so we keep meaningful tags.
-    """
     for col in ["label", "emotion", "condition", "stimulus", "trial_type"]:
         if col in events_df.columns:
             return col
